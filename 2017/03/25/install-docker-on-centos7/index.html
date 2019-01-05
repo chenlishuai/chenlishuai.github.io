@@ -17,7 +17,7 @@
 
 
 
-  <meta name="description" content="Hello World">
+  <meta name="description" content="CentOS7上安装docker">
 
 
 
@@ -40,7 +40,7 @@
 
 
 
-<link rel="canonical" href="https://legendary.coding.me/2019/01/05/hello-world/">
+<link rel="canonical" href="https://legendary.coding.me/2017/03/25/install-docker-on-centos7/">
 
 
 
@@ -88,7 +88,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title> Hello World - 大帅 </title>
+    <title> CentOS7上安装docker - 大帅 </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -150,13 +150,13 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Hello World
+          CentOS7上安装docker
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2019-01-05
+          2017-03-25
         </span>
         
         
@@ -168,7 +168,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#系统要求"><span class="toc-text">系统要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移除旧版本"><span class="toc-text">移除旧版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装docker"><span class="toc-text">安装docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#卸载docker"><span class="toc-text">卸载docker</span></a></li></ol>
     </div>
   </div>
 
@@ -176,15 +176,26 @@
 
     <div class="post-content">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>Docker分为企业版<code>Docker EE</code>和社区版<code>Docker CE</code>,这里选择安装社区版。<br><a id="more"></a></p>
+<h2 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h2><p>64位CentOS7</p>
+<h2 id="移除旧版本"><a href="#移除旧版本" class="headerlink" title="移除旧版本"></a>移除旧版本</h2><p>老版本docker叫做<code>docker</code>或<code>docker-engine</code>，如果安装过，可以卸载它及其依赖。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum remove docker \</span><br><span class="line">                  docker-common\</span><br><span class="line">                  container-selinux\</span><br><span class="line">                  docker-selinux\</span><br><span class="line">                  docker-engine</span><br></pre></td></tr></table></figure>
+<p><code>/var/lib/docker</code>目录下包含docker的镜像，容器，卷，网络等数据会被保留下来。</p>
+<h2 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h2><p>1.安装<code>yum-utils</code>,它提供了<code>yum-config-manager</code>工具。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install -y yum-utils</span><br></pre></td></tr></table></figure>
+<p>2.使用<code>yum-config-manager</code>设置仓库地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+<p>3.更新yum包索引</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum makecache fast</span><br></pre></td></tr></table></figure>
+<p>4.安装docker</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install docker-ce</span><br></pre></td></tr></table></figure>
+<p>5.启动docker</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+<p>6.测试 hello-world</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run hello-world</span><br></pre></td></tr></table></figure>
+<h2 id="卸载docker"><a href="#卸载docker" class="headerlink" title="卸载docker"></a>卸载docker</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove docker-ce</span><br></pre></td></tr></table></figure>
+<p>想要删除镜像，容器，卷等数据，可以删除<code>/var/lib/docker</code>目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo rm -rf /var/lib/docker</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -200,7 +211,7 @@
     </p>
     <p class="copyright-item">
       <span>原文链接: </span>
-      <a href="https://legendary.coding.me/2019/01/05/hello-world/">https://legendary.coding.me/2019/01/05/hello-world/</a>
+      <a href="https://legendary.coding.me/2017/03/25/install-docker-on-centos7/">https://legendary.coding.me/2017/03/25/install-docker-on-centos7/</a>
     </p>
     <p class="copyright-item">
       <span>许可协议: </span>
@@ -222,15 +233,15 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/01/05/hello-hexo/">
+      <a class="prev" href="/2017/05/03/deploy-lemp-fast/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Hello Hexo</span>
+        <span class="prev-text nav-default">快速部署LEMP</span>
         <span class="prev-text nav-mobile">上一篇</span>
       </a>
     
     
-      <a class="next" href="/2017/05/14/share-datas-to-multiViews-in-laravel/">
-        <span class="next-text nav-default">laravel中多视图共享数据</span>
+      <a class="next" href="/2017/02/12/VagrantFile-configuration/">
+        <span class="next-text nav-default">VagrantFile 配置多台虚拟机</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>

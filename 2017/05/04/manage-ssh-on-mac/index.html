@@ -17,7 +17,7 @@
 
 
 
-  <meta name="description" content="Hello World">
+  <meta name="description" content="Mac系统管理SSH">
 
 
 
@@ -40,7 +40,7 @@
 
 
 
-<link rel="canonical" href="https://legendary.coding.me/2019/01/05/hello-world/">
+<link rel="canonical" href="https://legendary.coding.me/2017/05/04/manage-ssh-on-mac/">
 
 
 
@@ -88,7 +88,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title> Hello World - 大帅 </title>
+    <title> Mac系统管理SSH - 大帅 </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -150,13 +150,13 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Hello World
+          Mac系统管理SSH
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2019-01-05
+          2017-05-04
         </span>
         
         
@@ -168,7 +168,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li></ol>
     </div>
   </div>
 
@@ -176,15 +176,11 @@
 
     <div class="post-content">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>公司有好几台Linux服务器，通过SSH进行管理。在Windows上一般使用Xshell保存链接信息，每次都可以通过标签快速登录多台服务器。在Mac上一直没有找到像Xshell这种利器。最后找到一种方案，可以实现通过类似<code>ssh server1</code>这种简单命令即可连接服务器，这正是我想要的方式。<br><a id="more"></a></p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>编辑<code>~/.ssh/config</code>文件，并把私钥放到<code>~/.ssh</code>下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Host  web</span><br><span class="line">  HostName  公网IP</span><br><span class="line">  Port  9901</span><br><span class="line">  User  wheel用户</span><br><span class="line">  IdentityFile  ~/.ssh/web-id_rsa</span><br><span class="line"></span><br><span class="line">Host  db1</span><br><span class="line">  HostName  公网IP</span><br><span class="line">  Port  9902</span><br><span class="line">  User  wheel用户</span><br><span class="line">  IdentityFile  ~/.ssh/db1-id_rsa</span><br><span class="line"></span><br><span class="line">Host  db2</span><br><span class="line">  HostName  公网IP</span><br><span class="line">  Port  9903</span><br><span class="line">  User  wheel用户</span><br><span class="line">  IdentityFile  ~/.ssh/db2-id_rsa</span><br><span class="line"></span><br><span class="line">Host  ftp</span><br><span class="line">  HostName  公网IP</span><br><span class="line">  Port  9904</span><br><span class="line">  User  wheel用户</span><br><span class="line">  IdentityFile  ~/.ssh/ftp_id_rsa</span><br></pre></td></tr></table></figure>
+<p>配置好后，即可以快速登录服务器，例如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ssh web</span><br><span class="line">$ ssh db1</span><br><span class="line">$ ssh db2</span><br><span class="line">$ ssh ftp</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -200,7 +196,7 @@
     </p>
     <p class="copyright-item">
       <span>原文链接: </span>
-      <a href="https://legendary.coding.me/2019/01/05/hello-world/">https://legendary.coding.me/2019/01/05/hello-world/</a>
+      <a href="https://legendary.coding.me/2017/05/04/manage-ssh-on-mac/">https://legendary.coding.me/2017/05/04/manage-ssh-on-mac/</a>
     </p>
     <p class="copyright-item">
       <span>许可协议: </span>
@@ -222,15 +218,15 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/01/05/hello-hexo/">
+      <a class="prev" href="/2017/05/14/share-datas-to-multiViews-in-laravel/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Hello Hexo</span>
+        <span class="prev-text nav-default">laravel中多视图共享数据</span>
         <span class="prev-text nav-mobile">上一篇</span>
       </a>
     
     
-      <a class="next" href="/2017/05/14/share-datas-to-multiViews-in-laravel/">
-        <span class="next-text nav-default">laravel中多视图共享数据</span>
+      <a class="next" href="/2017/05/03/deploy-lemp-fast/">
+        <span class="next-text nav-default">快速部署LEMP</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
